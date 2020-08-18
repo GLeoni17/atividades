@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <script src="jquery-3.5.1.min.js"></script>
         <title>Exercício Compartilhado</title>
     </head>
     <style>
@@ -20,8 +21,43 @@
         
     </style>
 
+    <script>
+        $(document).ready(function(){
+
+            $("#campo").keyup(function(){
+                $("#quadrado2").html($("#campo").val());
+            });
+
+            $("#negrito").click(function(){
+                if($("#quadrado2").css("font-weight")==700){
+                    $("#quadrado2").css("font-weight", "normal");
+                }else{
+                    $("#quadrado2").css("font-weight", "bold");
+                }
+            });
+
+            $("#italico").click(function(){
+                if($("#quadrado2").css("font-style")=="italic"){
+                    $("#quadrado2").css("font-style", "normal");
+                }else{
+                    $("#quadrado2").css("font-style", "italic");
+                }
+            });
+
+            $("#sublinhado").click(function(){
+                if($("#quadrado2").css("text-decoration")=="none solid rgb(0, 0, 0)"){
+                    $("#quadrado2").css("text-decoration", "underline");
+                }else{
+                    $("#quadrado2").css("text-decoration", "none");
+                }
+            });
+                
+        });
+            
+    </script>
+
     <body>
-        <script src="jquery-3.5.1.min.js"></script>
+        
         <h3> Exercicio Compartilhado</h3>
 		
         <img id="negrito" src="negrito.png" />
@@ -31,44 +67,6 @@
         <div id="quadrado"><textarea id = "campo" name = "campo" placeholder="Digite aqui" ></textarea></div>
 		
         <div id="quadrado2"></div>
-
-        <script>
-            var negrito=0, italico=0, sublinhado=0;
-            $("#campo").keyup(function(){
-                $("#quadrado2").html($("#campo").val());
-            });
-
-            $("#negrito").click(function(){
-                if(negrito==1){
-                    negrito--;
-                    $("#quadrado2").css("font-weight", "normal");
-                }else{
-                    negrito++;
-                    $("#quadrado2").css("font-weight", "bold");
-                }
-            });
-
-            $("#italico").click(function(){
-                if(italico==1){
-                    italico--;
-                    $("#quadrado2").css("font-style", "normal");
-                }else{
-                    italico++;
-                    $("#quadrado2").css("font-style", "italic");
-                }
-            });
-
-            $("#sublinhado").click(function(){
-                if(sublinhado==1){
-                    sublinhado--;
-                    $("#quadrado2").css("text-decoration", "none");
-                }else{
-                    sublinhado++;
-                    $("#quadrado2").css("text-decoration", "underline");
-                }
-            });
-
-        </script>
-		
+        
     </body>
 </html>
