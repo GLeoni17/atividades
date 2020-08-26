@@ -10,14 +10,12 @@
             $(document).ready(function(){
                $("#cadastra_fruta").click(function(){
                 var fruta_atual=$("input[name='nome_fruta_atual']").val();
-                
+                $("#ja_registrou").css("color", "red");
                 $.get("recebe_frutas.php", {"fruta":fruta_atual}, function(tem_fruta){
 
                     if(tem_fruta=="Nova Fruta Cadastrada."){
                         $("#frutas").html($("#frutas").html()+"<li>"+fruta_atual+"</li>");
                         $("#ja_registrou").css("color", "green");
-                    }else{
-                        $("#ja_registrou").css("color", "red");
                     }
                     $("#ja_registrou").html(tem_fruta);
                 });
