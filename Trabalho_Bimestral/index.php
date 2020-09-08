@@ -11,7 +11,7 @@
                 function func(){
                     $.getJSON("https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking/?decada="+$("input[name='ano']").val(), function(valores){
 
-                        $("#nomes").html("<tr><th width='auto' height ='20px'>Posição</th><th width='auto' height ='20px'>Nome</th><th id='muda' width='100px' height ='20px'>Idade</th></tr><tr><td id='some' colspan='3' >Preencha o nome e o ano para verificar se este nome está entre os 20 mais frequentes da década.</td></tr>");
+                        $("#nomes").html("<tr><th width='auto' height ='20px'>Posição</th><th width='auto' height ='20px'>Nome</th><th id='muda' width='100px' height ='20px'>Frequência</th></tr><tr><td id='some' colspan='3' >Preencha o nome e o ano para verificar se este nome está entre os 20 mais frequentes da década.</td></tr>");
                         $("#some").hide();
 
                             $.each(valores[0].res, function(indice, valor){
