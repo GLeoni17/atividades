@@ -1,0 +1,5 @@
+Jogadores
+Times
+Campeonatos
+
+Escolher um assunto qualquer, 3 forms, 3 listar, 3 tabelas interligadas no banco, requisições AJAX para cadastrar e listar e alterações em textos e imagens
