@@ -4,11 +4,13 @@ include "conexao.php";
 
 cabecalho();
 
+echo "<div class='flex'>";
+
 echo "<table border='1px solid black'>
     <tr>
         <th>Nome</th>
         <th>Idade</th>
-        <th>Posicao</th>
+        <th>Posição</th>
         <th>Time</th>
     </tr>
 ";
@@ -38,6 +40,8 @@ while($row = mysqli_fetch_assoc($res)){
 }
 
 echo "</table>";
+
+echo "</div>";
 
 rodape();
 

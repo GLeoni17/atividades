@@ -34,18 +34,20 @@ cabecalho();
     </script>
 </head>
 <body>
-    <form>
-        <input type="text" id="nome" name="nome_campeonato" placeholder="Nome do campeonato..."><br><br>
-            <?php
-                $select = "SELECT * FROM times ORDER BY nome";
-                $res = mysqli_query($con, $select);
-                while($row = mysqli_fetch_assoc($res)){
-                    echo "<br>";
-                    echo "<input type='checkbox' name='times[]' value=".$row["nome"]."> ".$row["nome"]."<br>";
-                }
-            ?><br><br>
-        <input type="button" id="cadastra" value="Cadastrar">
-    </form>
+    <div class="flex">
+        <form class="cadastro">
+            <input type="text" id="nome" name="nome_campeonato" placeholder="Nome do campeonato..."><br><br>
+                <?php
+                    $select = "SELECT * FROM times ORDER BY nome";
+                    $res = mysqli_query($con, $select);
+                    while($row = mysqli_fetch_assoc($res)){
+                        echo "<br>";
+                        echo "<input type='checkbox' name='times[]' value=".$row["nome"]."> ".$row["nome"]."<br>";
+                    }
+                ?><br><br>
+            <button id="cadastra">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
 

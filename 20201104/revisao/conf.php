@@ -1,5 +1,5 @@
 <?php
-    $alt = "Descrição da imagem";
+    $alt = "Icone CS";
     $desenvolvedor = "Gabriel Leoni Duarte";
     $menu = array(
                     "time"=>"Times",

@@ -18,11 +18,13 @@ $res = mysqli_query($con, $select)
                     ORDER BY times_campeonato.cod_campeonato";
 
         $res2 = mysqli_query($con, $select2);
-        echo "<h2><b>".$row["nome"]."</b></h2><br>";
+        echo "<h2><b>".$row["nome"]."</b></h2>";
+        echo "<ul>";
         while($row2 = mysqli_fetch_assoc($res2)){
-            echo $row2["nome_time"];
-            echo "<br>";
+            echo "<li>".$row2["nome_time"]."</li>";
         }
+        echo "</ul>";
+        echo"<br>";
     }
 
     rodape();

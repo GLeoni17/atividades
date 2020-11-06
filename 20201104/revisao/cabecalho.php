@@ -11,6 +11,8 @@ function cabecalho(){
             <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' />            
             <link href='css/main.css' rel='stylesheet' />            
             <script src='bootstrap/js/bootstrap.min.js'></script>
+            <link href='css/index.css' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
         </head>
         <body>                
             <nav class='navbar navbar-expand-md bg-primary navbar-dark'>

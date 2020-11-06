@@ -28,28 +28,30 @@ cabecalho();
     </script>
 </head>
 <body>
-    <form>
-        <input type="text" id="nome" name="nome_jogador" placeholder="Nome do jogador..."><br><br>
-        <input type="number" id="idade" name="idade_jogador" placeholder="Idade do jogador..."><br><br>
-        <input type="text" id="posicao" name="posicao_jogador" placeholder="Posicao do jogador..."><br><br>
-        <select id="times">
-            <option label=".:Time do jogador:." >
-            <br>
+    <div class="flex">
+        <form class="cadastro">
+            <input type="text" id="nome" name="nome_jogador" placeholder="Nome do jogador..."><br><br>
+            <input type="number" id="idade" name="idade_jogador" placeholder="Idade do jogador..."><br><br>
+            <input type="text" id="posicao" name="posicao_jogador" placeholder="Posicao do jogador..."><br><br>
+            <select id="times">
+                <option label=".:Time do jogador:." >
+                <br>
 
-            <?php
-                $select = "SELECT * FROM times ORDER BY nome";
-                $res = mysqli_query($con, $select) or die(mysqli_error($con));
-                while($row = mysqli_fetch_assoc($res)){
-                    $nome = $row["nome"];
-                    $id = $row["id_time"];
-                    echo "<option id='time' label='$nome' value='$id'>
-                    <br>";
-                }
-            ?>
-            
-        </select><br><br>
-        <button id="cadastra">Cadastrar</button>
-    </form>
+                <?php
+                    $select = "SELECT * FROM times ORDER BY nome";
+                    $res = mysqli_query($con, $select) or die(mysqli_error($con));
+                    while($row = mysqli_fetch_assoc($res)){
+                        $nome = $row["nome"];
+                        $id = $row["id_time"];
+                        echo "<option id='time' label='$nome' value='$id'>
+                        <br>";
+                    }
+                ?>
+                
+            </select><br><br>
+            <button id="cadastra">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
 
