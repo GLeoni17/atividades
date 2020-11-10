@@ -23,10 +23,7 @@ $(document).ready(function(){
         t = "jogadores";
         c = "id_jogador";
         p = {tabela:t, id:i, coluna:c};
-        alert('a');
-        console.log(p);
         $.post("remover.php", p, function(r){
-            alert(r);
             if(r==1){
                 $("#jogador_removido").html("Jogador removido com sucesso.");
                 $("button[value='"+ i + "']").closest("tr").remove();
