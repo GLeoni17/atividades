@@ -19,3 +19,7 @@ button{
 .remover_time{
     color: red;
 }
+
+table{
+    width: 500px;
+}

@@ -8,7 +8,8 @@ echo "<link href='css/listar.css' rel='stylesheet' type='text/css'>
       <div id='jogador_removido'></div>
       <div class='flex'>";
 
-echo "<table>
+echo "<div id='tbody_jogador'>
+<table>
     <tr>
         <th class='com_borda'>Nome</th>
         <th class='com_borda'>Idade</th>
@@ -39,15 +40,21 @@ while($row = mysqli_fetch_assoc($res)){
             <td class='com_borda'>$idade</td>
             <td class='com_borda'>$posicao</td>
             <td class='com_borda'>$time</td>
-            <td><button class='alterar_time' value='$id'>✏️</button><td> 
+            <td><button class='alterar_jogador' value='$id' data-toggle='modal' data-target='#modal'>✏️</button><td> 
             <td><button class='remover_jogador' value='$id'>X</button></td>
           </tr>";
 }
 
 echo "</table>";
 
-echo "</div>";
+echo "</div>
+</div>";
 
+$titulo = "Alterar Jogador";
+$nome_form = "alterar_jogador.php";
+include "modal.php";
+    
+include "scripts_jogador.php";    
 rodape();
 
 ?>

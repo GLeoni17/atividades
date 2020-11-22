@@ -1,5 +1,3 @@
-<link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' />
-<script src='bootstrap/js/bootstrap.min.js'></script>    
 
 <script>
 
@@ -14,8 +12,7 @@
             i = $(this).val();
             
             $.get("seleciona_time.php", {"id_time": i},function(r){
-                a = r[0];
-                console.log(a.nome);                               
+                a = r[0];                            
                 $("input[name='nome_time']").val(a.nome);
             });
         });
