@@ -47,8 +47,6 @@
                id_time = r;
            });*/
 
-           console.log(id_time);
-
            p = {
                 id_jogador:id_jogador,
                 //id_time:id_time,
@@ -59,7 +57,6 @@
            
            
            $.post("atualizar_jogador.php", p ,function(r){
-               console.log(r);
             if(r=='1'){
                 $("#msg").html("Jogador alterado com sucesso.");
                 $(".close").click();
@@ -81,7 +78,6 @@
             t+=         "<th class='com_borda'>Time</th>";
             t+=     "</tr>";
             $.each(r,function(i,a){   
-                console.log(a);
                 t+= "<tr>"
                 t+=     "<td class='com_borda'>"+a.nome_jogador+"</td>";
                 t+=     "<td class='com_borda'>"+a.idade_jogador+"</td>";

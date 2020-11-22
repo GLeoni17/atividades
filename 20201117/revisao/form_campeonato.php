@@ -16,7 +16,6 @@ cabecalho();
         $(document).ready(function() {
             $("#cadastra").click(function() {
                 var nome = $("#nome").val();
-                console.log(nome);
                 var checkbox_value = Array();
                 var i=0;
                 $("input[name='times[]']").each(function () {
@@ -27,7 +26,6 @@ cabecalho();
                     }
                 });
                 $.post("insere_campeonato.php", {"nome":nome, "checkbox_value":checkbox_value}, function(data){
-                    console.log(data);
                 });
             });
         });

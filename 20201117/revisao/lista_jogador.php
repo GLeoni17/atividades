@@ -5,7 +5,7 @@ include "conexao.php";
 cabecalho();
 
 echo "<link href='css/listar.css' rel='stylesheet' type='text/css'>
-      <div id='jogador_removido'></div>
+      <div id='msg'></div>
       <div class='flex'>";
 
 echo "<div id='tbody_jogador'>

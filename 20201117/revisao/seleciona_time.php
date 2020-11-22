@@ -10,8 +10,6 @@
         $select .= " WHERE id_time='$id_time'";
     }
 
-    $select .= " ORDER BY nome";
-
     $resultado = mysqli_query($con,$select)
         or die(mysqli_error($con));
 

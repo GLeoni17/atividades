@@ -19,9 +19,7 @@ cabecalho();
                 idade= $("#idade").val();
                 posicao= $("#posicao").val();
                 time= $("#times").val();
-                console.log
                 $.post("insere_jogador.php", {"nome":nome, "idade":idade, "posicao":posicao, "time":time}, function(msg){
-                    console.log(msg);
                 });
             });
         });
