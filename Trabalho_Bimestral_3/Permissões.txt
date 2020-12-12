@@ -1,0 +1,6 @@
+Nivel de permissões
+0 - Convidado
+1 - Jogador
+2 - Dono do time  - Consegue cadastrar jogadores e times -
+3 - Organizador de campeonato - Consegue cadastrar campeonatos
+4 - Administrador
