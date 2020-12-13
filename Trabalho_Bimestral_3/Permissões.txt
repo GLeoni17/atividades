@@ -1,6 +1,13 @@
 Nivel de permissões
 0 - Convidado
+
+Convidado consegue listar os jogadores, times e eventos
+Ele envia uma solicitação para ser jogador, dono de time ou organizador, mas até o administrador aceitar ele continua com permissão 0
+
 1 - Jogador
+
+Tem todas as permissões de convidado mas está adicionado na lista de jogadores e pode editar seus dados na tabela
+
 2 - Dono do time  - Consegue cadastrar jogadores e times -
 3 - Organizador de campeonato - Consegue cadastrar campeonatos
 4 - Administrador

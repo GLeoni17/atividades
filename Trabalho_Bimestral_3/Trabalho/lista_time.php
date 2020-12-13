@@ -18,12 +18,14 @@
     while($row = mysqli_fetch_assoc($res)){
         $nome = $row["nome"];
         $id = $row["id_time"];
-        echo "<li><h4><strong>$nome</strong>";
+        if($id != 0){
+            echo "<li><h4><strong>$nome</strong>";
             if(isset($_SESSION["usuario"]) && $_SESSION["usuario"] == $id){ // So pode alterar o dado se for o jdono do time
                     echo"<button class='alterar_time' value='$id' data-toggle='modal' data-target='#modal'>✏️</button> 
                     <button class='remover_time' value='$id'>ˣ</button>";
             }
               echo"</h4></li>";
+        }
     }
     echo "</ul>";
 

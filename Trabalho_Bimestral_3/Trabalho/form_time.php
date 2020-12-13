@@ -10,7 +10,7 @@ verifica(2);
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+<body>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="jquery-3.5.1.min.js"></script>
@@ -20,12 +20,15 @@ verifica(2);
         $(document).ready(function() {
             $("#cadastra").click(function() {
                 var nome_time = $("#nome_time").val();
-                $.post("insere_time.php", {"nome_time":nome_time}, function(msg){});
+                <?php
+                $id = $_SESSION["usuario"];
+                echo "$.post('insere_time.php', {'nome_time':nome_time, 'id':$id}, function(msg){
+                    console.log(msg);
+                });";
+                ?>
             });
         });
     </script>
-</head>
-<body>
     <div class="flex">
         <form class="cadastro">
             <input type="text" id="nome_time" name="nome_time" placeholder="Nome do time..."><br><br>

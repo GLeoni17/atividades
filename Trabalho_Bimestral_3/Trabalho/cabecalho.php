@@ -36,13 +36,18 @@ function cabecalho(){
 
             <div class='collapse navbar-collapse' id='menu'>
                 <ul class='navbar-nav'>
-                    <li role='presentation' class='dropdown'>";
+                    ";
                     if(isset($_SESSION["usuario"])){
 
                         $select = "SELECT permissao, nome FROM usuario WHERE id_usuario = '".$_SESSION["usuario"]."'";
                         $res = mysqli_query($con, $select);
                         $info = mysqli_fetch_assoc($res);
 
+                        echo"<span>Bem vindo ".$info["nome"]."! </span>
+                        <li role='presentation'>
+                        <a href='perfil.php'> Perfil</a>
+                        </li>
+                        <li role='presentation' class='dropdown'>";
                         
 
                         if($info["permissao"] > 1){ // Precisa ser dono de time pra cima pra conseguir registrar um jogador novo
@@ -52,9 +57,9 @@ function cabecalho(){
                             </a>
                             <ul class='dropdown-menu'>";
 
-                            echo "<li class='nav-item'>
-                                <a class='menu' href='form_jogador.php'>Jogador</a>
-                                </li>";
+                            //echo "<li class='nav-item'>
+                                //<a class='menu' href='form_jogador.php'>Jogador</a>
+                               // </li>";
 
                             echo "<li class='nav-item'>
                                 <a class='menu' href='form_time.php'>Time</a>
@@ -98,16 +103,25 @@ function cabecalho(){
                                     <a href='logout.php'>Sair</a>
                                 </li>
                             </ul>
-                        </li>";
-                        echo "<li>
+                        </li>
+                        <li>
+                            <ul class='navbar-nav'>
+                                <li role='presentation'>
+                                    <a href='correio.php'>✉</a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        ";
+                        /*echo "<li>
                         <ul class='navbar-nav'>
                             <li role='presentation'>
                                 <span>Bem vindo ".$info["nome"]."!</spam>
                             </li>
                         </ul>
-                    </li>";
+                    </li>";*/
                     }else{
-                        echo "
+                        echo "<li role='presentation' class='dropdown'>
                         <li>
                             <ul class='navbar-nav'>
                                 <li role='presentation'>

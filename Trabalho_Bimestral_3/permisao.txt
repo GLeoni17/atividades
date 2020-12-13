@@ -1,0 +1,16 @@
+Cadastro
+Id
+Nome
+Email
+Senha
+Nickname
+Idade
+Posicao
+
+Tem que esperar voce ser adicionado a algum time para aparecer no rank, enquanto isso somente permissao de convidado
+
+
+
+
+Login
+Permissoes

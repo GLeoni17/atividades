@@ -35,7 +35,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="salvar">Logain</button>
+        <button type="button" class="salvar">Login</button>
       </div>
     </div>
   </div>

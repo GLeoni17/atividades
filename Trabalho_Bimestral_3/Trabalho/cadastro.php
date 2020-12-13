@@ -4,8 +4,11 @@
 
     $nome = $_POST["nome"];
     $email = $_POST["email"];
-    $senha = $_POST["senha_cadastro"];
+    $senha = $_POST["senha_enviar"];
     $posicao = $_POST["posicao"];
+    $idade = $_POST["idade"];
+    $nickname = $_POST["nickname"];
+    $permissao_requerida = $_POST["profissao"];
 
     $select = "SELECT * FROM usuario WHERE email like '%$email%'";
 
@@ -19,12 +22,20 @@
                                     senha,
                                     nome,
                                     posicao,
-                                    permissao                    
+                                    permissao,
+                                    idade,
+                                    nickname,
+                                    permissao_requerida,
+                                    cod_time                    
                                 ) VALUES (
                                     '$email', 
                                     '$senha', 
                                     '$nome',
                                     '$posicao',
+                                    '0',
+                                    '$idade',
+                                    '$nickname',
+                                    '$permissao_requerida',
                                     '0'
                                 )";
         
