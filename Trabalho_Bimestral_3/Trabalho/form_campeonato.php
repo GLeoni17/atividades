@@ -28,7 +28,8 @@ verifica(3);
                         i++;
                     }
                 });
-                $.post("insere_campeonato.php", {"nome":nome, "checkbox_value":checkbox_value}, function(data){
+                $.post("insere_campeonato.php", {"nome":nome, "checkbox_value":checkbox_value}, function(msg){
+                    alert(msg);
                 });
             });
         });
@@ -36,14 +37,17 @@ verifica(3);
 </head>
 <body>
     <div class="flex">
+        <div id="msg_campeonato"></div>
         <form class="cadastro">
             <input type="text" id="nome" name="nome_campeonato" placeholder="Nome do campeonato..."><br><br>
                 <?php
                     $select = "SELECT * FROM times ORDER BY nome";
                     $res = mysqli_query($con, $select);
                     while($row = mysqli_fetch_assoc($res)){
-                        echo "<br>";
-                        echo "<input type='checkbox' name='times[]' value=".$row["nome"]."> ".$row["nome"]."<br>";
+                        if($row["id_time"]!=0){
+                            echo "<br>";
+                            echo "<input type='checkbox' name='times[]' value=".$row["nome"]."> ".$row["nome"]."<br>";
+                        }
                     }
                 ?><br><br>
             <button id="cadastra">Cadastrar</button>

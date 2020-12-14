@@ -8,14 +8,12 @@
        
         $(".alterar_jogador").click(function(){
 
-            id_jogador = $(this).val();
+            id_usuario = $(this).val();            
             
-            $.get("seleciona_jogador.php", {"id_jogador": id_jogador},function(r){
-                a = r[0];
-                $("input[name='nome_jogador']").val(a.nome_jogador);
-                $("input[name='idade_jogador']").val(a.idade_jogador);                            
-                $("input[name='posicao_time']").val(a.posicao_jogador);
-                $("input[name='nome_time']").val(a.nome_time);
+            $.post("seleciona_jogador.php", {"id_usuario": id_usuario},function(r){
+                $("input[name='nickname_alterar']").val(r.nickname);
+                $("input[name='posicao_alterar']").val(r.posicao);                            
+                $("input[name='nome_time']").val(r.nome_time);
             });
         });
 
@@ -41,22 +39,14 @@
        define_alterar_remover();
 
        $(".salvar").click(function(){
-           /*var nome_time = $("input[name='nome_time']").val();
-           $.post("achar_time.php", {"nome_time":nome_time}, function(r){
-               console.log(r);
-               id_time = r;
-           });*/
-
+           
            p = {
-                id_jogador:id_jogador,
-                //id_time:id_time,
-                nome:$("input[name='nome_jogador']").val(),
-                idade:$("input[name='idade_jogador']").val(),                           
-                posicao:$("input[name='posicao_time']").val(),
+                id_usuario:id_usuario,
+                nickname:$("input[name='nickname_alterar']").val(),
+                posicao:$("input[name='posicao_alterar']").val(),
            };
            
-           
-           $.post("atualizar_jogador.php", p ,function(r){
+           $.post("atualizar_jogador_modal.php", p ,function(r){
             if(r=='1'){
                 $("#msg").html("Jogador alterado com sucesso.");
                 $(".close").click();
@@ -68,7 +58,7 @@
        });
 
        function atualizar_tabela(){           
-        $.get("seleciona_jogador.php",function(r){
+        $.get("seleciona_jogador.php",{"method":1}, function(r){
             t = "";
             t+= "<table>";
             t+=     "<tr>";

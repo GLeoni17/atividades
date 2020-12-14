@@ -20,12 +20,10 @@ verifica(2);
         $(document).ready(function() {
             $("#cadastra").click(function() {
                 var nome_time = $("#nome_time").val();
-                <?php
-                $id = $_SESSION["usuario"];
-                echo "$.post('insere_time.php', {'nome_time':nome_time, 'id':$id}, function(msg){
-                    console.log(msg);
-                });";
-                ?>
+                <?php echo "var id = ".$_SESSION["usuario"].";"; ?>
+                $.post("insere_time.php", {"nome_time":nome_time, "id":id}, function(msg){
+                    alert(msg);
+                });
             });
         });
     </script>

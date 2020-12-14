@@ -14,3 +14,8 @@ Tem que esperar voce ser adicionado a algum time para aparecer no rank, enquanto
 
 Login
 Permissoes
+
+Erro alterar jogador 2a vez (JSON script)
+
+
+

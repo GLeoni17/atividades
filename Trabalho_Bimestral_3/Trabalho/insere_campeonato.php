@@ -3,24 +3,32 @@
     $nome = $_POST["nome"];
     $checkbox_value = $_POST["checkbox_value"];
 
-    $query = "INSERT INTO campeonatos (nome) VALUES ('$nome')";
-    mysqli_query($con, $query);
+    $select = "SELECT id_campeonato FROM campeonatos WHERE nome = '$nome'";
+    $res = mysqli_query($con, $select);
+    if(mysqli_num_rows($res)>0){
+        echo "Erro ao cadastrar campeonato (Nome de campeonato ja cadastrado)!";
+    }else{
+        $query = "INSERT INTO campeonatos (nome) VALUES ('$nome')";
+        mysqli_query($con, $query);
 
-    $query = "SELECT id_campeonato FROM campeonatos WHERE nome like '$nome'";
-    $res = mysqli_query($con, $query);
-    $id_campeonato = mysqli_fetch_assoc($res);
+        $query = "SELECT id_campeonato FROM campeonatos WHERE nome like '$nome'";
+        $res = mysqli_query($con, $query);
+        $id_campeonato = mysqli_fetch_assoc($res);
 
-    echo $id_campeonato["id_campeonato"];
-
-    foreach($checkbox_value as $id){
-        $insert = "INSERT INTO times_campeonato (
-                                                    nome_time,
-                                                    cod_campeonato
-                                                ) VALUES (
-                                                    '$id',
-                                                    '".$id_campeonato["id_campeonato"]."'
-                                                )";
-        mysqli_query($con, $insert);
+        foreach($checkbox_value as $id){
+            $insert = "INSERT INTO times_campeonato (
+                                                        nome_time,
+                                                        cod_campeonato
+                                                    ) VALUES (
+                                                        '$id',
+                                                        '".$id_campeonato["id_campeonato"]."'
+                                                    )";
+            mysqli_query($con, $insert);
+        }
+        echo "Campeonato cadastrado com sucesso";
     }
+
+
+    
 
 ?>

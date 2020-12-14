@@ -3,21 +3,21 @@
 
     include "conexao.php";
 
-    $select = "SELECT jogadores.nome as nome_jogador, jogadores.idade as idade_jogador,
-               jogadores.posicao as posicao_jogador, times.id_time as id_time, times.nome as nome_time 
-               FROM jogadores INNER JOIN times ON jogadores.cod_time = times.id_time";
+    $id_usuario = $_POST["id_usuario"];
 
-    if(isset($_GET["id_jogador"])){
-        $id_jogador = $_GET["id_jogador"];
-        $select .= " WHERE id_jogador='$id_jogador'";
+    $select = "SELECT usuario.nickname as nickname, usuario.nome as nome, usuario.idade as idade, 
+    usuario.posicao as posicao, times.nome as nome_time FROM usuario INNER JOIN times ON usuario.cod_time=times.id_time";
+
+    if(isset($_GET["method"])){
+        $select.= " WHERE usuario.permissao='1'";
+    }else{
+        $select.= " WHERE id_usuario='$id_usuario'";
     }
 
     $resultado = mysqli_query($con,$select)
         or die(mysqli_error($con));
 
-    while($linha = mysqli_fetch_assoc($resultado)){
-        $matriz[]=$linha;
-    }
+    $linha = mysqli_fetch_assoc($resultado);
 
-    echo json_encode($matriz);
+    echo json_encode($linha);
 ?>

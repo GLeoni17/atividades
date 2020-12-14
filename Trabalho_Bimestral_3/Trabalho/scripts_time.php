@@ -59,11 +59,13 @@
         $.get("seleciona_time.php",function(r){
             t = "";
             $.each(r,function(i,a){   
-                t += "<li><h4>";             
-                t += a.nome;
-                t += "<button class='alterar_time' value="+a.id_time+" data-toggle='modal' data-target='#modal'>✏️</button> ";
-                t += "<button class='remover_time' value="+a.id_time+">ˣ</button>";
-                t += "</h4></li>";    
+                if(a.id_time != 0){
+                    t += "<li><h4>";             
+                    t += a.nome;
+                    t += "<button class='alterar_time' value="+a.id_time+" data-toggle='modal' data-target='#modal'>✏️</button> ";
+                    t += "<button class='remover_time' value="+a.id_time+">ˣ</button>";
+                    t += "</h4></li>";
+                }     
             });           
             $("#tbody_time").html(t);
             define_alterar_remover();
