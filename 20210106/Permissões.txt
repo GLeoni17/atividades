@@ -1,0 +1,30 @@
+Não autenticado - Nivel -1
+- Não consegue ver nada no sistema, apenas area de "Cadastro" e "Login"
+
+Apreciador - Nivel 0
+- Listar todos os times, jogadores e campeonatos.
+- Alterar dados do perfil.
+
+
+Jogador - Nivel 1
+- Todas as permissões do apreciador.
+- Aparece no "Listar Jogadores".
+
+Dono de Time - Nivel 2
+- Todas as permissões do apreciador.
+- Cadastrar time.
+- Alterar dados do time (nome ou excluir).
+- Alterar apelido e posição do jogador do seu time.
+
+
+Organizador - Nivel 3
+- Todas as permissões do apreciador.
+- Cadastrar campeonatos.
+- Alterar dados do campeonato (nome ou excluir).
+
+Administrador - Nivel 4
+- Todas as permissões do apreciador, jogador, dono de time e organizador.
+- Consegue editar todos os jogadores, times e campeonatos.
+
+
+

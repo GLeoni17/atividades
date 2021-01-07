@@ -2,9 +2,9 @@
     $alt = "Icone CS";
     $desenvolvedor = "Gabriel Leoni Duarte";
     $menu = array(
-                    "time"=>"Times",
-                    "jogador"=>"Jogadores",
-                    "campeonato"=>"Campeonatos"
+                    "jogador"=>"Jogador",
+                    "time"=>"Time", 
+                    "campeonato"=>"Campeonato"
                 );
 
     include "cabecalho.php";

@@ -21,6 +21,9 @@ verifica(3);
                 var nome = $("#nome").val();
                 var checkbox_value = Array();
                 var i=0;
+                <?php
+                echo "var id_usuario = ".$_SESSION["usuario"].";";
+                ?>
                 $("input[name='times[]']").each(function () {
                     var ischecked = $(this).is(":checked");
                     if (ischecked) {
@@ -28,8 +31,12 @@ verifica(3);
                         i++;
                     }
                 });
-                $.post("insere_campeonato.php", {"nome":nome, "checkbox_value":checkbox_value}, function(msg){
-                    alert(msg);
+                $.post("insere_campeonato.php", {"nome":nome, "checkbox_value":checkbox_value, "id_usuario":id_usuario}, function(msg){
+                    if(msg == 1){
+                        alert("Campeonato criado com sucesso.");
+                    }else{
+                        alert("Erro ao criar o campeonato.");
+                    }
                 });
             });
         });
@@ -50,7 +57,7 @@ verifica(3);
                         }
                     }
                 ?><br><br>
-            <button id="cadastra">Cadastrar</button>
+            <button type="button" id="cadastra">Cadastrar</button>
         </form>
     </div>
 </body>

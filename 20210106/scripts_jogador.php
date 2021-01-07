@@ -2,7 +2,7 @@
 
     $(function(){
 
-       var id_jogador, id_time; 
+       var id_usuario, id_time; 
 
        function define_alterar_remover(){ 
        
@@ -10,10 +10,11 @@
 
             id_usuario = $(this).val();            
             
-            $.post("seleciona_jogador.php", {"id_usuario": id_usuario},function(r){
-                $("input[name='nickname_alterar']").val(r.nickname);
-                $("input[name='posicao_alterar']").val(r.posicao);                            
-                $("input[name='nome_time']").val(r.nome_time);
+            $.get("seleciona_jogador.php", {"id_usuario": id_usuario},function(r){
+                //console.log(r);
+                $("input[name='nickname_alterar']").val(r[0].nickname);
+                $("input[name='posicao_alterar']").val(r[0].posicao);                            
+                $("input[name='nome_time']").val(r[0].nome_time);
             });
         });
 
@@ -21,7 +22,7 @@
 
             i = $(this).val();
             t = "jogadores";
-            c = "id_jogador";
+            c = "id_usuario";
             p = {tabela:t, id:i, coluna:c};
             $.post("remover.php", p, function(r){
                 if(r==1){
@@ -58,7 +59,17 @@
        });
 
        function atualizar_tabela(){           
-        $.get("seleciona_jogador.php",{"method":1}, function(r){
+        $.get("seleciona_jogador.php",{"method":1, "id_usuario":id_usuario}, function(r){
+
+            <?php
+                    echo "var permissao = ".$_SESSION["permissao"].";";
+                    echo "var cod_time = ".$_SESSION["cod_time"].";"
+            ?>
+
+
+            console.log(permissao);
+            console.log(cod_time);
+            
             t = "";
             t+= "<table>";
             t+=     "<tr>";
@@ -67,14 +78,19 @@
             t+=         "<th class='com_borda'>Posição</th>";
             t+=         "<th class='com_borda'>Time</th>";
             t+=     "</tr>";
-            $.each(r,function(i,a){   
+            $.each(r,function(i,a){  
+                
                 t+= "<tr>"
-                t+=     "<td class='com_borda'>"+a.nome_jogador+"</td>";
-                t+=     "<td class='com_borda'>"+a.idade_jogador+"</td>";
-                t+=     "<td class='com_borda'>"+a.posicao_jogador+"</td>";
+                t+=     "<td class='com_borda'>"+a.nickname+"</td>";
+                t+=     "<td class='com_borda'>"+a.idade+"</td>";
+                t+=     "<td class='com_borda'>"+a.posicao+"</td>";
                 t+=     "<td class='com_borda'>"+a.nome_time+"</td>";
-                t+=     "<td><button class='alterar_jogador' value='$id' data-toggle='modal' data-target='#modal'>✏️</button><td> ";
-                t+=     "<td><button class='remover_jogador' value='$id'>X</button></td>";
+                
+                if(permissao==4 || (a.id_time!=0 && (permissao==2 && a.id_time == cod_time))){
+                    t+=     "<td><button class='alterar_jogador' value='$id' data-toggle='modal' data-target='#modal'>✏️</button><td> ";
+                    t+=     "<td><button class='remover_jogador' value='$id'>X</button></td>";
+                }
+                
                 t+= "</tr>";
                 // Fazer um metodo post pra escrever    
             });

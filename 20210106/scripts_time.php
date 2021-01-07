@@ -22,7 +22,7 @@
             i = $(this).val();
             t = "times";
             c = "id_time";
-            p = {tabela:t, id:i, coluna:c};
+            p = {tabela:t, id:i, coluna:c, remover_time:1};
             $.post("remover.php", p, function(r){
                 if(r==1){
                     $("#msg").html("Time removido com sucesso.");
@@ -58,12 +58,22 @@
        function atualizar_tabela(){           
         $.get("seleciona_time.php",function(r){
             t = "";
-            $.each(r,function(i,a){   
+            <?php
+                $id_usuario = $_SESSION["usuario"];
+                $select = "SELECT cod_time FROM usuario WHERE id_usuario='$id_usuario'";
+                $res = mysqli_query($con, $select);
+                $res = mysqli_fetch_assoc($res);
+                echo "var permissao = ".$_SESSION["permissao"].";
+                var cod_time = ".$res["cod_time"].";";
+            ?>
+            $.each(r,function(i,a){  
                 if(a.id_time != 0){
                     t += "<li><h4>";             
                     t += a.nome;
-                    t += "<button class='alterar_time' value="+a.id_time+" data-toggle='modal' data-target='#modal'>✏️</button> ";
-                    t += "<button class='remover_time' value="+a.id_time+">ˣ</button>";
+                    if(permissao==4 || a.id_time == cod_time){
+                        t += "<button class='alterar_time' value="+a.id_time+" data-toggle='modal' data-target='#modal'>✏️</button> ";
+                        t += "<button class='remover_time' value="+a.id_time+">ˣ</button>";
+                    }                    
                     t += "</h4></li>";
                 }     
             });           

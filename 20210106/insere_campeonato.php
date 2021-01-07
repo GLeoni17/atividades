@@ -1,14 +1,20 @@
 <?php 
     include "conexao.php";
+
     $nome = $_POST["nome"];
     $checkbox_value = $_POST["checkbox_value"];
+    $id_usuario = $_POST["id_usuario"];
 
     $select = "SELECT id_campeonato FROM campeonatos WHERE nome = '$nome'";
     $res = mysqli_query($con, $select);
+
+
     if(mysqli_num_rows($res)>0){
-        echo "Erro ao cadastrar campeonato (Nome de campeonato ja cadastrado)!";
+        echo "2";
     }else{
-        $query = "INSERT INTO campeonatos (nome) VALUES ('$nome')";
+        echo "1";
+        $query = "INSERT INTO campeonatos (nome, cod_usuario) VALUES ('$nome', '$id_usuario')";
+
         mysqli_query($con, $query);
 
         $query = "SELECT id_campeonato FROM campeonatos WHERE nome like '$nome'";
@@ -25,10 +31,6 @@
                                                     )";
             mysqli_query($con, $insert);
         }
-        echo "Campeonato cadastrado com sucesso";
     }
-
-
-    
 
 ?>

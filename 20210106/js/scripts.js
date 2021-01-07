@@ -1,4 +1,50 @@
+function tts(mensagem) {
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = mensagem;
+    window.speechSynthesis.speak(msg);
+};
+
 $(document).ready(function(){
+
+    //Ativar desativar TTS
+
+    var tts_verificar = 0;
+
+    $("#html").keydown(function(){
+        if(event.keyCode == 49){
+            $("#tts").click();
+        }
+    });
+
+    $(".ativar_tts").mouseover(function(){
+        if(tts_verificar == 1){
+            tts($(this).html());
+        }
+    });
+
+    $("#tts").click(function(){
+
+        if(tts_verificar == 0 || tts_verificar ==2){
+            tts_verificar=1;
+        }else{
+            tts_verificar=0;
+        }
+
+        if ('speechSynthesis' in window) {
+
+            if(tts_verificar == 1){
+                tts("Texto para voz Ativado");
+            }else{
+                tts("Texto para voz Desativado");
+            }
+            
+        }else{
+            alert("Desculpe, o seu navegador não suporta Texto para Voz!");
+        }
+        
+    });
+
+    // Fim TTS
 
     $(".remover_time").click(function(){
 

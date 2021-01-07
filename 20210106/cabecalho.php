@@ -1,5 +1,16 @@
 <?php
 
+function numero_mensagens(){
+    include "conexao.php";
+    $mensagens = "SELECT conteudo FROM correio WHERE id_usuario = '".$_SESSION["usuario"]."'";
+    $res = mysqli_query($con, $mensagens);
+    echo mysqli_num_rows($res);
+    if(mysqli_num_rows($res)>0){
+        $_SESSION["mensagens"] = mysqli_num_rows($res);
+    }
+}
+    
+
 function cabecalho(){
     session_start();
     //print_r($_SESSION);
@@ -10,7 +21,7 @@ function cabecalho(){
     include "conexao.php";
 
     echo "<!DOCTYPE html>
-    <html>
+    <html lang='pt-BR' id='html'>
         <head>
             <meta charset='utf-8' />
             <script src='js/jquery-3.5.1.min.js'></script>
@@ -45,29 +56,33 @@ function cabecalho(){
 
                         echo"<span>Bem vindo ".$info["nome"]."! </span>
                         <li role='presentation'>
-                        <a href='perfil.php'> Perfil</a>
+                        <a href='perfil.php' class='ativar_tts' value='perfil'> Perfil</a>
                         </li>
                         <li role='presentation' class='dropdown'>";
                         
 
                         if($info["permissao"] > 1){ // Precisa ser dono de time pra cima pra conseguir registrar um jogador novo
                             echo "
-                            <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
-                            Cadastrar <span class='caret'></span>
+                            <a class='dropdown-toggle ativar_tts' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' value='cadastrar'>
+                            Cadastrar 
                             </a>
                             <ul class='dropdown-menu'>";
 
                             //echo "<li class='nav-item'>
                                 //<a class='menu' href='form_jogador.php'>Jogador</a>
                                // </li>";
-
-                            echo "<li class='nav-item'>
-                                <a class='menu' href='form_time.php'>Time</a>
+                            if($info["permissao"] == 2 || $info["permissao"] == 4){
+                                echo "<li class='nav-item'>
+                                <a class='menu ativar_tts' href='#' data-toggle='modal' data-target='#modal_cadastro' value='jogador'>Jogador</a>
+                                </li>
+                                <li class='nav-item'>
+                                <a class='menu ativar_tts' href='form_time.php' value='time'>Time</a>
                                 </li>";
+                            }
                             
                             if($info["permissao"] > 2){ // Precisa ser organizador de campeonatos pra cima pra registrar um novo campeonato
                                 echo "<li class='nav-item'>
-                                <a class='menu' href='form_campeonato.php'>Campeonato</a>
+                                <a class='menu ativar_tts' href='form_campeonato.php' value='campeonato'>Campeonato</a>
                                 </li>";
                             }
                         
@@ -84,13 +99,13 @@ function cabecalho(){
                         
 
                         echo "<li role='presentation' class='dropdown'>
-                        <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
-                        Listar <span class='caret'></span>
+                        <a class='dropdown-toggle ativar_tts' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' value='listar'>
+                        Listar 
                         </a>
                         <ul class='dropdown-menu'>";                        
                         foreach($menu as $i=>$l){
                             echo "<li class='nav-item'>
-                                    <a class='menu' href='lista_$i.php'>$l</a>
+                                    <a class='menu ativar_tts' href='lista_$i.php' value='$l'>$l</a>
                                 </li>";
                         }  
                         echo "
@@ -100,17 +115,27 @@ function cabecalho(){
                         <li>
                             <ul class='navbar-nav'>
                                 <li role='presentation'>
-                                    <a href='logout.php'>Sair</a>
+                                    <a href='logout.php' class='ativar_tts' value='sair'>Sair</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
                             <ul class='navbar-nav'>
                                 <li role='presentation'>
-                                    <a href='correio.php'>✉</a>
+                                    <a href='correio.php' class='ativar_tts' value='correio'>✉
+                                   
+                                    </a>
+                                    <span class='numero_mensagens'>
+                                    ";
+
+                                    numero_mensagens();
+                                    
+                                    echo"
+                                    </span>
                                 </li>
                             </ul>
                         </li>
+                        
                         
                         ";
                         /*echo "<li>
@@ -125,10 +150,10 @@ function cabecalho(){
                         <li>
                             <ul class='navbar-nav'>
                                 <li role='presentation'>
-                                    <a href='#' data-toggle='modal' data-target='#modal_cadastro'>Cadastro</a>
+                                    <a href='#' class='abre_modal ativar_tts' data-toggle='modal' data-target='#modal_cadastro' value='cadastro'>Cadastro</a>
                                 </li>
                                 <li role='presentation'>
-                                    <a href='#' data-toggle='modal' data-target='#modal_login'>Login</a>
+                                    <a href='#' class='abre_modal ativar_tts' data-toggle='modal' data-target='#modal_login' value='login'>Login</a>
                                 </li>
                             </ul>
                         </li>
@@ -136,6 +161,14 @@ function cabecalho(){
                         
                         ";
                     }
+
+                    echo "<li>
+                            <ul class='navbar-nav'>
+                                <li role='presentation'>
+                                    <a id='tts' href='#'>🗣️ 1 para ativar Texto para Voz</a>
+                                </li>
+                            </ul>
+                        </li>";
 
             echo "</ul>  
                     
@@ -153,6 +186,13 @@ function cabecalho(){
             }
             
         }
+
+        if(isset($_GET["alterar"])){
+            if($_GET["alterar"]==1){
+                echo "<div id='sucesso'>Dado alterado com sucesso!</div>";
+            }
+        }
+
         if(isset($_GET["cadastro"])){
             echo "<div id='sucesso'>Cadastrado com sucesso!</div>";
         }
