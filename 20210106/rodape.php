@@ -4,7 +4,7 @@ function rodape(){
     echo "
     </main>
     <footer class='footer'>
-        <span class='text-muted'> Site desenvolvido por: $desenvolvedor</span>
+        <span class='text-muted ativar_tts'> Site desenvolvido por: $desenvolvedor</span>
     </footer>
     </body>
     </html>

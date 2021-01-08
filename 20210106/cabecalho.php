@@ -31,7 +31,7 @@ function cabecalho(){
             <link href='css/index.css' rel='stylesheet' type='text/css'>
             <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
             <script src='./js/jquery-3.5.1.min.js'></script>
-            <script src='./js/scripts.js'></script>
+            
             </head>
         <body>                
             <nav class='navbar navbar-expand-md bg-primary navbar-dark'>
@@ -54,7 +54,7 @@ function cabecalho(){
                         $res = mysqli_query($con, $select);
                         $info = mysqli_fetch_assoc($res);
 
-                        echo"<span>Bem vindo ".$info["nome"]."! </span>
+                        echo"<span class='ativar_tts'>Bem vindo ".$info["nome"]."! </span>
                         <li role='presentation'>
                         <a href='perfil.php' class='ativar_tts' value='perfil'> Perfil</a>
                         </li>
@@ -122,7 +122,7 @@ function cabecalho(){
                         <li>
                             <ul class='navbar-nav'>
                                 <li role='presentation'>
-                                    <a href='correio.php' class='ativar_tts' value='correio'>✉
+                                    <a href='correio.php' onmouseover=\"tts('Correio')\" value='correio'>✉
                                    
                                     </a>
                                     <span class='numero_mensagens'>

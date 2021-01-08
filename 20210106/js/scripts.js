@@ -1,18 +1,45 @@
+var tts_verificar = 0;
+
 function tts(mensagem) {
-    var msg = new SpeechSynthesisUtterance();
-    msg.text = mensagem;
-    window.speechSynthesis.speak(msg);
-};
+    if(tts_verificar==1 || tts_verificar == 3 || mensagem == "Texto para voz Desativado"){
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = mensagem;
+        window.speechSynthesis.speak(msg);
+    }
+}
+
+function tts_modal(){
+    if(tts_verificar == 1){
+        tts_verificar = 3;
+    }else if(tts_verificar == 0){
+        tts_verificar = 2;
+    }
+}
+
+function volta_tts_modal(){
+    if(tts_verificar == 2){
+        tts_verificar = 0;
+    }else if(tts_verificar == 3){
+        tts_verificar = 1;
+    }
+}
 
 $(document).ready(function(){
 
     //Ativar desativar TTS
 
-    var tts_verificar = 0;
+    //$("input").focusin(function(){alert('tesdt')})
+    
 
     $("#html").keydown(function(){
         if(event.keyCode == 49){
             $("#tts").click();
+        }
+    });
+
+    $("#html").mouseover(function(){
+        if(tts_verificar > 1){
+            volta_tts_modal();
         }
     });
 
@@ -24,17 +51,19 @@ $(document).ready(function(){
 
     $("#tts").click(function(){
 
-        if(tts_verificar == 0 || tts_verificar ==2){
-            tts_verificar=1;
-        }else{
-            tts_verificar=0;
-        }
+        //alert(tts_verificar);
 
         if ('speechSynthesis' in window) {
 
+            if(tts_verificar == 0){
+                tts_verificar=1;
+            }else if(tts_verificar == 1){
+                tts_verificar=0;
+            }
+
             if(tts_verificar == 1){
                 tts("Texto para voz Ativado");
-            }else{
+            }else if(tts_verificar == 0){
                 tts("Texto para voz Desativado");
             }
             
