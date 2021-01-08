@@ -16,11 +16,11 @@ echo "<link href='css/listar.css' rel='stylesheet' type='text/css'>
 echo "<div id='tbody_jogador'>
 <table>
     <tr>
-        <th class='com_borda'>Nickname</th>
-        <th class='com_borda'>Nome</th>
-        <th class='com_borda'>Idade</th>
-        <th class='com_borda'>Posição</th>
-        <th class='com_borda'>Time</th>
+        <th class='com_borda ativar_tts'>Nickname</th>
+        <th class='com_borda ativar_tts'>Nome</th>
+        <th class='com_borda ativar_tts'>Idade</th>
+        <th class='com_borda ativar_tts'>Posição</th>
+        <th class='com_borda ativar_tts'>Time</th>
     </tr>
 ";
 
@@ -57,14 +57,14 @@ while($row = mysqli_fetch_assoc($res)){
     $id_time = $row["id_time"];
 
     echo "<tr>
-            <td class='com_borda'>$nickname</th>
-            <td class='com_borda'>$nome</td>
-            <td class='com_borda'>$idade</td>
-            <td class='com_borda'>$posicao</td>
-            <td class='com_borda'>$time</td>";
+            <td class='com_borda ativar_tts'>$nickname</th>
+            <td class='com_borda ativar_tts'>$nome</td>
+            <td class='com_borda ativar_tts'>$idade</td>
+            <td class='com_borda ativar_tts'>$posicao</td>
+            <td class='com_borda ativar_tts'>$time</td>";
         if($_SESSION["permissao"]==4 || ($id_time!=0 && ($resultado["permissao"]==2 && $id_time == $resultado["cod_time"])) ){ // So pode alterar o dado se for o jogador
-            echo "<td><button class='alterar_jogador' value='$id' data-toggle='modal' data-target='#modal'>✏️</button><td> 
-            <td><button class='remover_jogador' value='$id'>X</button></td>";
+            echo "<td><button class='alterar_jogador' value='$id' data-toggle='modal' data-target='#modal' onmouseover=\"tts('alterar jogador')\">✏️</button><td> 
+            <td><button class='remover_jogador' value='$id'  onmouseover=\"tts('remover jogador')\">X</button></td>";
         }
 
           echo"</tr>";

@@ -28,10 +28,10 @@
         $id = $row["id_time"];
         if($id != 0){
 
-            echo "<li><h4><strong>$nome</strong>";
+            echo "<li><h4><strong class='ativar_tts'>$nome</strong>";
             if($permissao==4 || $res2["cod_time"] == $id){ // So pode alterar o dado se for o jdono do time
-                    echo"<button class='alterar_time' value='$id' data-toggle='modal' data-target='#modal'>✏️</button> 
-                         <button class='remover_time' value='$id'>ˣ</button>";
+                    echo"<button class='alterar_time' value='$id' data-toggle='modal' data-target='#modal' onmouseover=\"tts('alterar time')\">✏️</button> 
+                         <button class='remover_time' value='$id' onmouseover=\"tts('remover time')\">ˣ</button>";
             }
               echo"</h4></li>";
             

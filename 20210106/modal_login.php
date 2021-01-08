@@ -100,14 +100,14 @@
       <div class="modal-body">
         <form id="cadastro" method="post" action="cadastro.php">
           <input type="text" name="nome" placeholder="Nome..." onmouseover="tts('Nome')" onfocus="alert(tts_verificar)" required> <br><br>
-          <input type="email" name="email" placeholder="Email..." onmouseover="tts('E-mail')" onfocus="tts_modal()"required> <br><br>
-          <input type="password" name="senha_cadastro" placeholder="Senha..." onmouseover="tts('Senha')" onfocus="tts_modal()"required> <br><br>
-          <input type="password" name="c_senha_cadastro" placeholder="Confirmar senha..." onmouseover="tts('Confirmar senha')" onfocus="tts_modal()"required> <span id="senha_errada"></span><br><br>
+          <input type="email" name="email" placeholder="Email..." onmouseover="tts('E-mail')" onfocus="tts_modal()" required> <br><br>
+          <input type="password" name="senha_cadastro" placeholder="Senha..." onmouseover="tts('Senha')" onfocus="tts_modal()" required> <br><br>
+          <input type="password" name="c_senha_cadastro" placeholder="Confirmar senha..." onmouseover="tts('Confirmar senha')" onfocus="tts_modal()" required> <span id="senha_errada"></span><br><br>
 
           <input type="hidden" name="senha_enviar" required>
 
-          <input type="text" name="nickname" placeholder="Nome no jogo..." onmouseover="tts('Nome no jogo')" onfocus="tts_modal()"required><br><br>
-          <input type="number" name="idade" placeholder="Idade" onmouseover="tts('Idade')" onfocus="tts_modal()"required> <br><br>
+          <input type="text" name="nickname" placeholder="Nome no jogo..." onmouseover="tts('Nome no jogo')" onfocus="tts_modal()" required><br><br>
+          <input type="number" name="idade" placeholder="Idade" onmouseover="tts('Idade')" onfocus="tts_modal() "required> <br><br>
 
           <span onmouseover="tts('Você é?')" > Voce é? </span><br>
           <?php

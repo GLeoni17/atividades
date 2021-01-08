@@ -11,8 +11,8 @@
         <?php include $nome_form; ?>
       </div>
       <div class="modal-footer">
-        <button type="button" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="salvar">Salvar</button>
+        <button type="button" data-dismiss="modal" class="ativar_tts" onclick="volta_tts_modal()">Cancelar</button>
+        <button type="button" class="salvar" class="ativar_tts" onclick="volta_tts_modal()">Salvar</button>
       </div>
     </div>
   </div>
@@ -34,8 +34,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="salvar">Login</button>
+        <button type="button" data-dismiss="modal" class="ativar_tts" onclick="volta_tts_modal()">Cancelar</button>
+        <button type="button" class="salvar" class="ativar_tts" onclick="volta_tts_modal()">Login</button>
       </div>
     </div>
   </div>
