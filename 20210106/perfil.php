@@ -57,26 +57,26 @@ echo"<script>
 
     <input type='hidden' name='alterar_id' value='$id'>
 
-    <input type='text' name='alterar_nome' placeholder='Nome...' value='$nome' > <br><br>
-    <input type='email' name='alterar_email' placeholder='Email...' value='$email' > <br><br>
-    <input type='password' name='alterar_senha' placeholder='Trocar senha...'> <br><br>
+    <input type='text' name='alterar_nome' placeholder='Nome...' value='$nome' onmouseover=\"tts('nome')\"  onfocus=\"tts_modal()\" > <br><br>
+    <input type='email' name='alterar_email' placeholder='Email...' value='$email' onmouseover=\"tts('e-mail')\"  onfocus=\"tts_modal()\"> <br><br>
+    <input type='password' name='alterar_senha' placeholder='Trocar senha...' onmouseover=\"tts('trocar senha')\"  onfocus=\"tts_modal()\"> <br><br>
 
-    <input type='text' name='alterar_nickname' placeholder='Nome no jogo...' value='$nickname' ><br><br>
-    <input type='number' name='alterar_idade' placeholder='Idade' value='$idade' > <br><br>
+    <input type='text' name='alterar_nickname' placeholder='Nome no jogo...' value='$nickname' onmouseover=\"tts('nome no jogo')\"  onfocus=\"tts_modal()\"><br><br>
+    <input type='number' name='alterar_idade' placeholder='Idade' value='$idade' onmouseover=\"tts('idade')\"  onfocus=\"tts_modal()\"> <br><br>
 
-    <span> Voce é? </span><br>
-    <input type='radio' id='0' name='alterar_profissao' value='0'> Apreciador<br>
-    <input type='radio' id='1' name='alterar_profissao' value='1'> Jogador<br>
-    <input type='radio' id='2' name='alterar_profissao' value='2'> Dono de time<br>
-    <input type='radio' id='3' name='alterar_profissao' value='3'> Organizador de campeonato<br><br>
+    <span onmouseover=\"tts('você é?')\"  onfocus=\"tts_modal()\"> Voce é? </span><br>
+    <input type='radio' id='0' name='alterar_profissao' value='0' onmouseover=\"tts('apreciador')\"  onfocus=\"tts_modal()\"> Apreciador<br>
+    <input type='radio' id='1' name='alterar_profissao' value='1' onmouseover=\"tts('jogador')\"  onfocus=\"tts_modal()\"> Jogador<br>
+    <input type='radio' id='2' name='alterar_profissao' value='2' onmouseover=\"tts('dono de time')\"  onfocus=\"tts_modal()\"> Dono de time<br>
+    <input type='radio' id='3' name='alterar_profissao' value='3' onmouseover=\"tts('organizador de campeonato')\"  onfocus=\"tts_modal()\"> Organizador de campeonato<br><br>
 
-    <input id='alterar_posicao' type='text' name='alterar_posicao' placeholder='Posição que joga...' value='$posicao' disabled> <br><br>
+    <input id='alterar_posicao' type='text' name='alterar_posicao' placeholder='Posição que joga...' value='$posicao' disabled  onmouseover=\"tts('posição que joga)\"  onfocus=\"tts_modal()\"> <br><br>
 
     <input type='hidden' id='permissao' max='3'>
 
     <div class='modal-footer'>
-        <button type='button' data-dismiss='modal'>Cancelar</button>
-        <button id='alterar' type='submit' class='alterar'>Alterar</button>
+        <button type='button' data-dismiss='modal'  class='ativar_tts' onclick=\"volta_tts_modal(); window.location.href = 'index.php'\">Cancelar</button>
+        <button id='alterar' type='submit' class='alterar ativar_tts' onclick='volta_tts_modal(); tts('dado alterado com sucesso')'>Alterar</button>
     </div>
 
     </form>

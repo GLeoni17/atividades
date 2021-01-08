@@ -29,8 +29,8 @@ verifica(2);
     </script>
     <div class="flex">
         <form class="cadastro">
-            <input type="text" id="nome_time" name="nome_time" placeholder="Nome do time..."><br><br>
-            <button id="cadastra">Cadastrar</button>
+            <input type="text" id="nome_time" name="nome_time" placeholder="Nome do time..." onmouseover="tts('nome do time')" onfocus="tts_modal()" ><br><br>
+            <button id="cadastra" class="ativar_tts" onclick="volta_tts_modal()">Cadastrar</button>
         </form>
     </div>
 </body>

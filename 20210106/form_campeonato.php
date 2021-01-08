@@ -33,9 +33,17 @@ verifica(3);
                 });
                 $.post("insere_campeonato.php", {"nome":nome, "checkbox_value":checkbox_value, "id_usuario":id_usuario}, function(msg){
                     if(msg == 1){
-                        alert("Campeonato criado com sucesso.");
+                        if(tts_verificar == 1 || tts_verificar == 3){
+                            tts('Campeonato criado com sucesso');
+                        }else{
+                            alert("Campeonato criado com sucesso.");
+                        }
                     }else{
-                        alert("Erro ao criar o campeonato.");
+                        if(tts_verificar == 1 || tts_verificar == 3){
+                            tts('Erro ao criar o campeonato');
+                        }else{
+                            alert("Erro ao criar o campeonato.");
+                        }
                     }
                 });
             });
@@ -46,18 +54,18 @@ verifica(3);
     <div class="flex">
         <div id="msg_campeonato"></div>
         <form class="cadastro">
-            <input type="text" id="nome" name="nome_campeonato" placeholder="Nome do campeonato..."><br><br>
+            <input type="text" id="nome" name="nome_campeonato" placeholder="Nome do campeonato..." onmouseover="tts('nome do campeonato')" onfocus="tts_modal()" ><br><br>
                 <?php
                     $select = "SELECT * FROM times ORDER BY nome";
                     $res = mysqli_query($con, $select);
                     while($row = mysqli_fetch_assoc($res)){
                         if($row["id_time"]!=0){
                             echo "<br>";
-                            echo "<input type='checkbox' name='times[]' value=".$row["nome"]."> ".$row["nome"]."<br>";
+                            echo "<input type='checkbox' name='times[]' value=".$row["nome"]." onmouseover=\"tts('".$row["nome"]."')\" > ".$row["nome"]."<br>";
                         }
                     }
                 ?><br><br>
-            <button type="button" id="cadastra">Cadastrar</button>
+            <button type="button" id="cadastra" class="ativar_tts" onclick="volta_tts_modal()">Cadastrar</button>
         </form>
     </div>
 </body>
