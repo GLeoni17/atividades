@@ -4,9 +4,6 @@
 	include "conteudo.php";
 	
 	if(isset($_SESSION["cpf"])){
-		date_default_timezone_set('America/Sao_Paulo');
-		$_SESSION["hora"] = date('G');
-		$_SESSION["minuto"] = date('i');
 		$titulo = "Entrada";
 		$conteudos = array();
 		$conteudos[0] = "<p>Olá, ".$_SESSION['email'].".</p>";

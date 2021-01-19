@@ -5,22 +5,25 @@ $(document).ready(function(){
 
     var mexeu = 0;
 
-    setInterval(function(){
+    setInterval(function(){ // Verifica de 20 em 20 segundos, se atingir 3 ele fecha o login, ou reseta toda vez que o usuario mexe o mouse dentro do site
 
-        if(mexeu == 0){
+        mexeu++;
+
+        if(mexeu == 2){
+            alert("Tem alguem ai?");
+        }else if(mexeu == 3){
+            mexeu = 0;
             alert("Voce foi desconectado por inatividade!");
             $.get("logout.php", {},  function(msg){
                 location.href = "index.php"
             })
-        }else{
-            mexeu = 0;
         }
        
-     }, 300000);
+     }, 20000);
 
      $("#html").mousemove(function(){
-        mexeu = 1;
+        mexeu = 0;
     });
 
-    }); 
+}); 
 </script>
