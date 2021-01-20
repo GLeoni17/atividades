@@ -28,6 +28,7 @@
                 $_SESSION["cpf"] = $linha["cpf"];
                 $_SESSION["tipo"] = $linha["tipo"];
                 $_SESSION["email"] = $email;
+                $_SESSION["entrada"] = time();
 
                 header("location: index.php");
             }

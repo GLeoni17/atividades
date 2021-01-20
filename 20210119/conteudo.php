@@ -10,9 +10,6 @@
 		foreach($conteudos as $conteudo) {
 			$html .= "\t\t".$conteudo."\n";
 		}
-
-		include "derruba.php";
-
 		$html .= "\t</body>\n";
 		$html .= "</html>";
 		echo $html;
