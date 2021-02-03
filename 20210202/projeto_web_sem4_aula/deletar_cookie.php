@@ -1,9 +1,9 @@
 <?php
-    $nome = $_POST["value"];
-    $caminho = "/";
-    $dominio = "localhost";
-    $seguro = false;
-    $http = true;
-    setcookie($nome, "", time()-1, $caminho, $dominio, $seguro, $http);
-    
+    $sucess = 1;
+    foreach ($_POST["cookies_deletar"] as $nome){
+        if(!setcookie($nome, "", time()-1, "/", "localhost", false, true)){
+            $sucess = 0;
+        }
+    }
+    echo $sucess;    
 ?>

@@ -9,10 +9,11 @@ $(document).ready(function () {
     $("input[name='cookie']:checked").each(function() {
       cookies_deletar.push($(this).val());
     });
-    
-    $.each(cookies_deletar, function (index, value) {
-        $.post("deletar_cookie.php", { value }, function (msg) {});
-        $("#"+value).remove();
+
+    $.post("deletar_cookie.php", { cookies_deletar }, function (teste) {
+      if(teste == 1){
+        atualiza_tabela_cookies();
+      }      
     });
 
   });
