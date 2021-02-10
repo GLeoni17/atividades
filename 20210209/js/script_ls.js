@@ -42,8 +42,8 @@ $(function() {
 function getItemLocalStorage(){
 
 	if(usuario = JSON.parse(localStorage.getItem("usuario"))){
-		if(Date.now() - usuario.data < 20000){
-			let email = atob(localStorage.getItem("email"));
+		if(Date.now() - usuario.data < 1000 * 60 * 60 * 24 * 2){ // Segundos para minutos, para horas, para dias
+			let email = atob(usuario.email);
 			$("#email").val(email);
 		}else{
 			localStorage.removeItem("usuario");
