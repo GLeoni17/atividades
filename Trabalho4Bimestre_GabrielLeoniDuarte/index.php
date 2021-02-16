@@ -9,6 +9,8 @@
 </head>
 <body>
     <?php
+        session_start();
+
         if(!empty($_GET)){
             if($_GET["erro"]==1){
                 echo "<strong>Erro ao criar sua conta, contate o sistema!</strong><br><br>";
@@ -16,8 +18,20 @@
                 echo "<strong>Conta criada com sucesso!</strong><br><br>";
             }
         }
+
+        if(!isset($_SESSION)){
+            echo "
+                <a href='cadastro.php'><button>Não possui login? Assine aqui!</button></a>
+                <a href='form_login.php'><button>Faça o login aqui!</button></a>
+            ";
+        }else{
+            echo"
+                <h4> Bem vindo(a) ".$_SESSION["nome"]."!</h4>
+                <a href='noticia1.php'><button>Noticia 1</button></a>
+                <a href='noticia2.php'><button>Noticia 2</button></a>
+            ";
+        }
     ?>
-    <a href="cadastro.php"><button>Não possui login? Assine aqui!</button></a>
-    <a href="autenticar.php"></a>
+    
 </body>
 </html>
