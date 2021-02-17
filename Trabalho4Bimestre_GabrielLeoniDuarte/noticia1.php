@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='js/jquery-3.5.1.min.js'></script>
+    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' /> 
+    <script src='bootstrap/js/bootstrap.min.js'></script>
 <?php
     include "conexao.php";
     include "cookies.php";
@@ -11,34 +20,19 @@
                 monta_cookie("acessos", 1);
             }else if($_COOKIE["ultimo_site"] != "noticia1.php"){
                 atualiza_cookie("acessos", $_COOKIE["acessos"]+1);
+                if($_COOKIE["acessos"] >= 6){
+                    echo"
+                        <script>
+                            $(document).ready(function(){
+                                $('#modalAcessos').modal('show');
+                            })
+                        </script>
+                    ";
+                }
             }
         }
-
         atualiza_cookie("ultimo_site", "noticia1.php");
-
     }
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='js/jquery-3.5.1.min.js'></script>
-    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' /> 
-    <script src='bootstrap/js/bootstrap.min.js'></script>
-
-    <?php
-        if(!empty($_COOKIE["acessos"]) && $_COOKIE["acessos"]>=5){
-            echo"
-                <script>
-                    $(document).ready(function(){
-                        $('#modalAcessos').modal('show');
-                    })
-                </script>
-            ";
-        }
     ?>
     <title>Noticia 1</title>
 </head>
@@ -52,7 +46,7 @@
     <a href='index.php'><button>Voltar ao menu</button></a>
     <a href='noticia2.php'><button>Noticia 2</button></a>
 
-    <div class="modal fade" id="modalAcessos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal fade" id="modalAcessos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

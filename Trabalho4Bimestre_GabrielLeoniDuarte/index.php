@@ -17,10 +17,6 @@
         include "conexao.php";
         include "cookies.php";
 
-        if(!empty($_COOKIE["ultimo_site"])){
-            deleta_cookie("ultimo_site");
-        }
-
         if(!empty($_GET)){
             if($_GET["erro"]==1){
                 echo "<strong>Erro ao criar sua conta, contate o sistema!</strong><br><br>";
@@ -34,13 +30,22 @@
                 <a href='cadastro.php'><button>Não possui login? Assine aqui!</button></a>
                 <a href='form_login.php'><button>Faça o login aqui!</button></a>
             ";
+
+            if(empty($_COOKIE["ultimo_site"])){
+                monta_cookie("ultimo_site", "index.php");
+            }else{
+                if(empty($_COOKIE["acessos"])){
+                    monta_cookie("acessos", 0);
+                }
+            }
+        
+            atualiza_cookie("ultimo_site", "index.php");
+        
         }else{
             echo"
                 <h4> Bem vindo(a) ".$_SESSION["nome"]."!</h4>
                 <a href='logout.php'><button>Logout</button></a><br><br>
             ";
-
-            atualiza_cookie("acessos", 1);
         }
 
         echo "

@@ -9,9 +9,7 @@
         $seguro = false;
         $http = true;
 
-        if($nome_cookie == "acessos"){
-            $valor = 1;
-        }else if($nome_cookie == "ultimo_site"){
+        if($nome_cookie == "acessos" || $nome_cookie == "ultimo_site"){
             $valor = $conteudo_cookie;
         }
 
