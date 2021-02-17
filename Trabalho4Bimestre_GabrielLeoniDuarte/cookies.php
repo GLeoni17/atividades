@@ -3,7 +3,7 @@
 
         $nome = $nome_cookie;
         $valor = base64_encode($conteudo_cookie);
-        $validade = time() + 604800000; // 7 Dias
+        $validade = time() + 2628000000; // 1 Mês
         $caminho = "/";
         $dominio = "localhost";
         $seguro = false;
@@ -19,7 +19,7 @@
     }
 
     function atualiza_cookie($nome_cookie, $conteudo_cookie){
-        $validade = time() + 604800000; // 7 Dias
+        $validade = time() + 2628000000; // 1 Mês
         $caminho = "/";
         $dominio = "localhost";
         $seguro = false;
