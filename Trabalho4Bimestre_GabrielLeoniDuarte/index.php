@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='js/jquery-3.5.1.min.js'></script>
+    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' /> 
+    <script src='bootstrap/js/bootstrap.min.js'></script>
+
     <title>Index</title>
-    <script src="js/jquery-3.5.1.min.js"></script>
+    
 </head>
 <body>
     <?php
@@ -35,6 +39,8 @@
                 <h4> Bem vindo(a) ".$_SESSION["nome"]."!</h4>
                 <a href='logout.php'><button>Logout</button></a><br><br>
             ";
+
+            atualiza_cookie("acessos", 1);
         }
 
         echo "
