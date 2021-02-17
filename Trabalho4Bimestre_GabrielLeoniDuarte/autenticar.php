@@ -1,9 +1,9 @@
 <?php
-	session_start();
+    include "conexao.php";
 	
     if(!empty($_POST)) {
 		
-		include "conexao.php";
+        include "cookies.php";
 		
         $email = $_POST["email"];
         $senha = md5($_POST["senha"]);
@@ -32,6 +32,13 @@
 
                 if($base == 'administrador'){
                     $_SESSION["permissao"] = $linha["permissao"];
+                }
+
+                if(!empty($_POST["lembrar"])){
+                    monta_cookie("email", $email);
+                    deleta_cookie("acessos");
+                }else{
+                    deleta_cookie("email");
                 }
 
                 header("location: index.php");

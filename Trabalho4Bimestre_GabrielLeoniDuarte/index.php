@@ -9,7 +9,13 @@
 </head>
 <body>
     <?php
-        session_start();
+
+        include "conexao.php";
+        include "cookies.php";
+
+        if(!empty($_COOKIE["ultimo_site"])){
+            deleta_cookie("ultimo_site");
+        }
 
         if(!empty($_GET)){
             if($_GET["erro"]==1){
@@ -19,7 +25,7 @@
             }
         }
 
-        if(!isset($_SESSION)){
+        if(empty($_SESSION)){
             echo "
                 <a href='cadastro.php'><button>Não possui login? Assine aqui!</button></a>
                 <a href='form_login.php'><button>Faça o login aqui!</button></a>
@@ -27,10 +33,14 @@
         }else{
             echo"
                 <h4> Bem vindo(a) ".$_SESSION["nome"]."!</h4>
-                <a href='noticia1.php'><button>Noticia 1</button></a>
-                <a href='noticia2.php'><button>Noticia 2</button></a>
+                <a href='logout.php'><button>Logout</button></a><br><br>
             ";
         }
+
+        echo "
+            <a href='noticia1.php'><button>Noticia 1</button></a>
+            <a href='noticia2.php'><button>Noticia 2</button></a>
+        ";
     ?>
     
 </body>

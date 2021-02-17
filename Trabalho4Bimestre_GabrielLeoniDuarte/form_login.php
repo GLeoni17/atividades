@@ -14,8 +14,20 @@
     ?>
     <h3>Autenticação</h3>
     <form action="autenticar.php" method="POST">
-        <input type="email" placeholder="Email..." name="email" required><br><br>
+        <?php
+
+            if(!empty($_COOKIE["email"])){
+                $value = "value = ".base64_decode($_COOKIE["email"]);
+            }else{
+                $value = "";
+            }
+
+            echo ("<input type='email' placeholder='Email...' name='email' $value required><br><br>");
+
+        ?>
+        
         <input type="password" placeholder="Senha..." name="senha" required><br><br>
+        <input type="checkbox" name="lembrar" value="1"> Lembrar E-mail?<br><br>
         <button type="submit">Autenticar</button>
     </form>
 </body>
